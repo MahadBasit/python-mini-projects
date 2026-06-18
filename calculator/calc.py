@@ -6,6 +6,8 @@ while True:
             op = input("Enter a operation: ")
             if op in ['+', '-', '*', '/']:
                 break
+            else:
+                print("Enter a valid operation")
        
         
         if op == '+':
@@ -23,5 +25,11 @@ while True:
         print(result)
         break
 
-    except ValueError:
+    except (ValueError,ZeroDivisionError) as e:
+
+        if isinstance(e, ZeroDivisionError):
+            print("Cannot Divide by zero")
+            
+        elif isinstance(e,ValueError):
+            print("Enter valid numbers")
         pass
