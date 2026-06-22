@@ -9,8 +9,11 @@ while True:
             else:
                 print("Enter a valid operation")
        
-        
-        if op == '+':
+        if op == '/' and num2 == 0:
+            print('Cannot divide by zero')
+            continue
+
+        elif op == '+':
             result = num1 + num2
 
         elif op == '-':
@@ -23,13 +26,10 @@ while True:
             result = num1 / num2
             
         print(result)
-        break
+        cont = input("Do you want to continue? ").upper()
+        if cont == 'NO' or cont == 'N':
+            break
+             
 
-    except (ValueError,ZeroDivisionError) as e:
-
-        if isinstance(e, ZeroDivisionError):
-            print("Cannot Divide by zero")
-            
-        elif isinstance(e,ValueError):
-            print("Enter valid numbers")
-        pass
+    except ValueError:
+        print("Enter valid numbers")
