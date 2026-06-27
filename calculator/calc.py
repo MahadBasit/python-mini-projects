@@ -1,35 +1,38 @@
-while True:
-    try:
-        num1 = int(input("Enter a num: "))
-        num2 = int(input("Enter another num: "))
-        while True:
-            op = input("Enter a operation: ")
-            if op in ['+', '-', '*', '/']:
+def main():
+    while True:
+        try:
+            num1 = int(input("Enter a num: "))
+            num2 = int(input("Enter another num: "))
+            while True:
+                op = input("Enter a operation: ")
+                if op in ['+', '-', '*', '/']:
+                    break
+                else:
+                    print("Enter a valid operation")
+        
+            print(calc(num1, num2, op))
+            con = input('Do you want to continue: ').upper()
+            if con == 'NO':
                 break
-            else:
-                print("Enter a valid operation")
-       
-        if op == '/' and num2 == 0:
-            print('Cannot divide by zero')
-            continue
 
-        elif op == '+':
-            result = num1 + num2
+        except ValueError:
+            print('Invalid input(s)')
+        except ZeroDivisionError:
+            print('Cannot divide by 0')
 
-        elif op == '-':
-            result = num1 - num2
+def calc(n1, n2, op):
 
-        elif op == '*':
-            result = num1 * num2
+    if op == '+':
+         return n1 + n2
 
-        else:
-            result = num1 / num2
-            
-        print(result)
-        cont = input("Do you want to continue? ").upper()
-        if cont == 'NO' or cont == 'N':
-            break
-             
+    elif op == '-':
+        return n1 - n2
 
-    except ValueError:
-        print("Enter valid numbers")
+    elif op == '*':
+        return n1 * n2
+
+    else:
+        return n1 / n2
+    
+if __name__ == "__main__":
+    main()
